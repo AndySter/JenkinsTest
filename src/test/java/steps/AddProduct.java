@@ -22,14 +22,18 @@ public class AddProduct {
 
     @Before
     public void openBrowser() throws MalformedURLException {
+        //driver = ConnectionJenkins.createDriver();
+        //driver = new EdgeDriver();
+        //System.setProperty("webdriver.msedgedriver.driver", "\\src\\test\\resources\\msedgedriver.exe");
+        //driver.manage().window().maximize();
+    }
+
+    @И("запущен файл qualit-sandbox.jar и открыта страница по адресу {string}")
+    public void openWindow(String string) throws MalformedURLException {
         driver = ConnectionJenkins.createDriver();
         //driver = new EdgeDriver();
         //System.setProperty("webdriver.msedgedriver.driver", "\\src\\test\\resources\\msedgedriver.exe");
         driver.manage().window().maximize();
-    }
-
-    @И("запущен файл qualit-sandbox.jar и открыта страница по адресу {string}")
-    public void openWindow(String string) {
         driver.get(string);
         driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
