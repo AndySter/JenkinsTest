@@ -2,13 +2,18 @@ package steps;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
 
-import java.io.*;
-import java.net.*;
-import java.util.*;
 
 public class ConnectionJenkins {
     private static Properties loadProperties() {
@@ -37,7 +42,7 @@ public class ConnectionJenkins {
                     System.setProperty("webdriver.chrome.driver", "/src/test/resources/chromedriver.exe");
                     return new ChromeDriver();
                 default:
-                    throw new IllegalArgumentException("Неизвестный локальный браузер: " + browser);
+                    throw new IllegalArgumentException("Uncorrect browser " + browser);
             }
 
         } else {
